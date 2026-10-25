@@ -40,7 +40,7 @@ Strict rules:
 
 def optimize_prompt(user_input: str) -> str:
     resp = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         messages=[
             {"role": "system", "content": PE_SYSTEM},
             {"role": "user", "content": user_input},
@@ -114,7 +114,7 @@ def generate_questions(text: str, q_type: str, count: int, progress_bar=None) ->
         prompt = build_prompt(chunk, q_type, per_chunk)
         try:
             resp = client.chat.completions.create(
-                model="llama-3.1-8b-instant",
+                model="openai/gpt-oss-20b",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.3,
             )
